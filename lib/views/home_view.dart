@@ -56,15 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: GridView.builder(
                             gridDelegate:
                                 const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 1,
+                              crossAxisCount: 2,
                               childAspectRatio: 1.4,
                             ),
                             itemCount: films?.length,
                             itemBuilder: (context, i) {
-                              return InkWell(
+                              return Container(
+                                height: 250.0,
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0, horizontal: 12),
+                                      vertical: 8.0, horizontal: 9),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Colors.black26,
@@ -75,12 +76,28 @@ class _MyHomePageState extends State<MyHomePage> {
                                       children: [
                                         Positioned(
                                             top: 15,
-                                            left: 30,
+                                            left: 80,
                                             child: Text(films![i]['name'])),
                                         Positioned(
-                                          bottom: 15,
-                                          left: 5,
-                                          child: CachedNetworkImage(imageUrl: films![i]['img'],height: 100,width: 50,))
+                                            top: 30,
+                                            left: 80,
+                                            child: Text(films![i]['year'])),
+                                        Positioned(
+                                            top: 45,
+                                            left: 80,
+                                            child: Text(films![i]['duration'])),
+                                        Positioned(
+                                            top: 60,
+                                            left: 80,
+                                            child: Text(films![i]['director'])),
+                                        Positioned(
+                                          top: 0,
+                                          bottom: 0,
+                                          left: 0,
+                                          child: ClipRRect(
+                                            borderRadius: BorderRadius.all(Radius.circular(15)),
+                                            child: CachedNetworkImage(imageUrl: films![i]['img']),
+                                          ))
                                             ],
                                     ),
                                   ),
