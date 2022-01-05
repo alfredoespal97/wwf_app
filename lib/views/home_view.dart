@@ -31,10 +31,10 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Stack(
       children: [
         Positioned(
-          top: -50,
-          right: -50,
+          top: 20,
+          right: 20,
           child:
-              Image.asset('assets/movie.png', width: 90, fit: BoxFit.fitWidth),
+              Image.asset('assets/movie.png', width:100, fit: BoxFit.fitWidth),
         ),
         const Positioned(
           top: 80,
@@ -74,8 +74,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Stack(
                                       children: [
                                         Positioned(
-                                            child: Text(films![i]['name']))
-                                      ],
+                                            top: 15,
+                                            left: 30,
+                                            child: Text(films![i]['name'])),
+                                        Positioned(
+                                          bottom: 15,
+                                          left: 5,
+                                          child: CachedNetworkImage(imageUrl: films![i]['img'],height: 100,width: 50,))
+                                            ],
                                     ),
                                   ),
                                 ),
@@ -104,7 +110,6 @@ class _MyHomePageState extends State<MyHomePage> {
       if (value.statusCode == 200) {
         var decodedJsonData = jsonDecode(value.body);
         films = decodedJsonData['films'];
-        print(films![0]);
         setState(() {});
       } else {
         print('Request failed with status: ${value.statusCode}.');
