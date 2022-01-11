@@ -75,6 +75,14 @@ class _MyHomePageState extends State<MyHomePage> {
                                     child: Stack(
                                       children: [
                                         Positioned(
+                                            top: 0,
+                                            bottom: 0,
+                                            left: 0,
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                                              child: CachedNetworkImage(imageUrl: films![i]['img']),
+                                            )),
+                                        Positioned(
                                             top: 15,
                                             left: 80,
                                             child: Text(films![i]['name'])),
@@ -90,14 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                             top: 60,
                                             left: 80,
                                             child: Text(films![i]['director'])),
-                                        Positioned(
-                                          top: 0,
-                                          bottom: 0,
-                                          left: 0,
-                                          child: ClipRRect(
-                                            borderRadius: BorderRadius.all(Radius.circular(15)),
-                                            child: CachedNetworkImage(imageUrl: films![i]['img']),
-                                          ))
+
                                             ],
                                     ),
                                   ),
@@ -121,7 +122,7 @@ class _MyHomePageState extends State<MyHomePage> {
   //Funcion para llamar datos de las peliculas
   void fetchFilmsData() async {
     var url = Uri.https(
-        "raw.githubusercontent.com", "/alfredoespal97/json_wwf/main/wwf.json");
+        "raw.githubusercontent.com", "/alfredoespal97/json_wwf/main/db.json");
     await http.get(url).then((value) {
       print(value.statusCode);
       if (value.statusCode == 200) {
