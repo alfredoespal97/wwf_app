@@ -44,15 +44,13 @@ class _HomePageState extends State<HomePage> {
       body: Center(
           child: Column(children: <Widget>[
         Container(
-            child: Hero(
-          tag: 'img',
+            width: width,
           child: ClipRRect(
             borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50), bottomRight: Radius.circular(50)),
             child: Image.asset(
               'assets/fondo.jpg',
               height: 200,
             ),
-          ),
         )),
         films != null
             ? Expanded(
@@ -83,11 +81,14 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black26,
                                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                               ),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(15)),
-                                child: CachedNetworkImage(
-                                  imageUrl: films![i]['img'],
-                                  fit: BoxFit.fill,
+                              child: Hero(
+                                tag: 'img',
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                                  child: CachedNetworkImage(
+                                    imageUrl: films![i]['img'],
+                                    fit: BoxFit.fill,
+                                  ),
                                 ),
                               ),
                             ),
