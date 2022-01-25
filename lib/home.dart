@@ -63,12 +63,6 @@ class _HomePageState extends State<HomePage> {
                     itemBuilder: (context, i) {
                       return InkWell(
                         onTap: () {
-                          // print(films![i]['name']);
-                          // print(films![i]['img']);
-                          // print(films![i]['type']);
-                          // print(films![i]['year']);
-                          // print(films![i]['director']);
-                          // print(films![i]['duration']);
                           assignFilm(i);
                           Navigator.push(context, new MaterialPageRoute(builder: (context) => DetailPage(peli)));
                         },
